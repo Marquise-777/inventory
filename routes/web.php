@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -41,6 +44,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/addcat', [CategoryController::class, 'create']);
     Route::post('/addCategory', [CategoryController::class, 'store']);
     Route::delete('/deletecat/{id}', [CategoryController::class, 'destroy']);
+
+    Route::get('/supplier', [SupplierController::class, 'index'])->name('SupList');
+    Route::get('/addsupplier', [SupplierController::class, 'create']);
+    Route::post('/addsupplier', [SupplierController::class, 'store']);
+    Route::delete('/deletesupplier/{id}', [SupplierController::class, 'destroy']);
+
+    Route::get('plans', [PlanController::class, 'index'])->name('pricing');
+    Route::get('plans/{plan}', [PlanController::class, 'show'])->name("plans.show");
+    Route::post('subscription', [PlanController::class, 'subscription'])->name("subscription.create");
+
+    Route::get('sale', [SalesController::class, 'index'])->name('viewsale');
 });
 
 

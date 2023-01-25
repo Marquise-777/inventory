@@ -1,11 +1,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-    {{-- <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+    <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="/dashboard"> <i class=" mdi mdi-chart-arc"></i> Inventory</a>
         <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
                 alt="logo" /></a>
-    </div> --}}
+    </div>
     <ul class="nav">
-        <li class="nav-item profile">
+        {{-- <li class="nav-item profile">
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
@@ -27,11 +27,11 @@
                 <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                     aria-labelledby="profile-dropdown">
                     <a href="/profile" class="dropdown-item preview-item">
-                        {{-- <div class="preview-thumbnail">
+                        <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
                                 <i class="mdi mdi-settings text-primary"></i>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="preview-item-content">
                             <p class="preview-subject ellipsis mb-1 text-small">
                                 Account settings
@@ -42,74 +42,96 @@
 
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item preview-item">
-                        {{-- <div class="preview-thumbnail">
+                        <div class="preview-thumbnail">
                             <div class="preview-icon bg-dark rounded-circle">
                                 <i class="mdi mdi-calendar-today text-success"></i>
                             </div>
-                        </div> --}}
+                        </div>
                         <div class="preview-item-content">
                             <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
                         </div>
                     </a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item nav-category">
-            <span class="nav-link">Navigation</span>
+            <span class="nav-link">Main</span>
         </li>
-        <li class="nav-item menu-items" active>
-            <a class="nav-link" href="/">
-                {{-- <span class="menu-icon">
-                    <i class="mdi mdi-speedometer"></i>
-                </span> --}}
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="/dashboard">
+                <span class="menu-icon">
+                    <i class="mdi mdi-speedometer text-primary"></i>
+                </span>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
+        <div class="dropdown-divider"></div>
         <li class="nav-item menu-items">
             <a class="nav-link" href="/items">
-                {{-- <span class="menu-icon">
-                    <i class="mdi mdi-laptop"></i>
-                </span> --}}
+                <span class="menu-icon">
+                    <i class="mdi mdi-mdi mdi-format-list-bulleted text-primary"></i>
+                </span>
                 <span class="menu-title">Product List</span>
             </a>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="/category">
-                {{-- <span class="menu-icon">
-                    <i class="mdi mdi-playlist-play"></i>
-                </span> --}}
+                <span class="menu-icon">
+                    <i class="mdi mdi-playlist-play text-primary"></i>
+                </span>
                 <span class="menu-title">Category List</span>
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-                {{-- <span class="menu-icon">
-                    <i class="mdi mdi-table-large"></i>
-                </span> --}}
-                <span class="menu-title">Tables</span>
+            <a class="nav-link" href="/supplier">
+                <span class="menu-icon">
+                    <i class="mdi mdi-shopping text-primary"></i>
+                </span>
+                <span class="menu-title">Supplier List</span>
             </a>
         </li>
         <li class="nav-item menu-items">
+            <a class="nav-link" href="#">
+                <span class="menu-icon">
+                    <i class="mdi mdi-thermometer  text-primary"></i>
+                </span>
+                <span class="menu-title">Manage Unit</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="/sale">
+                <span class="menu-icon">
+                    <i class="mdi mdi-shopping text-primary"></i>
+                </span>
+                <span class="menu-title">Sales</span>
+            </a>
+        </li>
+        {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="pages/charts/chartjs.html">
-                {{-- <span class="menu-icon">
+                <span class="menu-icon">
                     <i class="mdi mdi-chart-bar"></i>
-                </span> --}}
+                </span>
                 <span class="menu-title">Charts</span>
             </a>
-        </li>
-        <li class="nav-item menu-items">
+        </li> --}}
+        {{-- <li class="nav-item menu-items">
             <a class="nav-link" href="pages/icons/mdi.html">
-                {{-- <span class="menu-icon">
+                <span class="menu-icon">
                     <i class="mdi mdi-contacts"></i>
-                </span> --}}
+                </span>
                 <span class="menu-title">Icons</span>
             </a>
+        </li> --}}
+        <li class="nav-item nav-category">
+            <span class="nav-link">Preferences</span>
         </li>
-        <li class="nav-item menu-items">
+        <div class="dropdown-divider"></div>
+
+        {{-- <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                {{-- <span class="menu-icon">
+                <span class="menu-icon">
                     <i class="mdi mdi-security"></i>
-                </span> --}}
+                </span>
                 <span class="menu-title">User Pages</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -123,12 +145,28 @@
                     <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
                 </ul>
             </div>
+        </li> --}}
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="/plans">
+                <span class="menu-icon">
+                    <i class=" mdi mdi-square-inc-cash text-primary"></i>
+                </span>
+                <span class="menu-title">Pricing</span>
+            </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="documentation">
-                {{-- <span class="menu-icon">
-                    <i class="mdi mdi-file-document-box"></i>
-                </span> --}}
+            <a class="nav-link" href="#">
+                <span class="menu-icon">
+                    <i class="  mdi mdi-information  text-primary"></i>
+                </span>
+                <span class="menu-title">About</span>
+            </a>
+        </li>
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="#">
+                <span class="menu-icon">
+                    <i class=" mdi mdi-book-open-page-variant   text-primary"></i>
+                </span>
                 <span class="menu-title">Documentation</span>
             </a>
         </li>

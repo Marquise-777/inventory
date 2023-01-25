@@ -2,24 +2,6 @@
 
 @section('content') --}}
 <style>
-    #add-card {
-        width: 40rem;
-    }
-
-    @media screen and (max-width: 450px) {
-
-        #add-card {
-            width: 20rem;
-        }
-    }
-
-    @media screen and (min-width: 451px) {
-
-        #add-card {
-            width: 30rem;
-        }
-    }
-
     @media screen and (min-width: 768px) {
 
         #add-card {
@@ -73,8 +55,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-2">
+        <div class="max-w-4xl mx-auto sm:px-3 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <center>
@@ -113,6 +95,18 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
+                                    {{-- <label for="exampleFormControlInput1" class="form-label">Category</label>
+                                        <input name="cat_id" type="text" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="Sports"> --}}
+                                    <label for="supplier_id" class="form-label">Supplier</label>
+                                    <select name="supplier_id" class="form-select " aria-label="Default select example">
+
+                                        @foreach ($suppliers as $supplier)
+                                            <option value="{{ $supplier->id }}">{{ $supplier->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <x-primary-button type="submit" class="ml-3">
                                         Add
                                     </x-primary-button>
@@ -125,4 +119,9 @@
             </div>
         </div>
     </div>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <li style="color: red" class="mt-5">{{ $error }}</li>
+        @endforeach
+    @endif
 </x-app-layout>

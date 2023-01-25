@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ItemsRequest;
 use App\Models\Category;
 use App\Models\items;
+use App\Models\supplier;
 use Illuminate\Http\Request;
 use  RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,7 +22,8 @@ class ItemsController extends Controller
     public function create()
     {
         $category = Category::get();
-        return view('add', compact('category'));
+        $suppliers = supplier::get();
+        return view('add', compact('category','suppliers'));
     }
 
 
@@ -33,6 +35,7 @@ class ItemsController extends Controller
         $data->desc = $request->desc;
         $data->unit = $request->unit;
         $data->category_id = $request->category_id;
+        $data->supplier_id = $request->supplier_id;
         $data->price = $request->price;
 
         $data->save();
@@ -45,7 +48,8 @@ class ItemsController extends Controller
     {
         $data = items::findOrFail($id);
         $category = Category::get();
-        return view('edit', compact('data', 'category'));
+        $suppliers = supplier::get();
+        return view('edit', compact('data', 'category','suppliers'));
     }
 
 

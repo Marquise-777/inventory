@@ -57,8 +57,8 @@
             </a>
         </div>
     </div> --}}
-    <div class="py-3">
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-0">
+        <div class="max-w-1xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900  table-responsive">
                     <a href="/add">
@@ -75,42 +75,34 @@
                                 <th>Qt.</th>
                                 <th>Price</th>
                                 <th>Category</th>
+                                <th>Supplier</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($iPro as $items)
+                            @foreach ($iPro as $item)
                                 <tr class="mb-2">
-                                    <td>{{ $items->id }}</td>
-                                    <td>{{ $items->title }}</td>
-                                    <td>{{ $items->desc }}</td>
-                                    <td>{{ $items->unit }}</td>
-                                    <td>{{ $items->price }}</td>
-                                    <td>{{ $items->category ? $items->category->title : '-' }}</td>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td>{{ substr($item->desc, 0, 20) }}</td>
+                                    <td>{{ $item->unit }}</td>
+                                    <td>{{ $item->price }}</td>
+                                    <td>{{ $item->category ? $item->category->title : '-' }}</td>
+                                    <td>{{ $item->supplier ? $item->supplier->title : '-' }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="/display/{{ $items->id }}">
-                                                <i class="fa fa-eye me-3">
-                                                    View
-                                                </i>
-                                            </a>
-                                            <a href="/items/{{ $items->id }}" class="me-3">
+
+                                            <a href="/items/{{ $item->id }}" class="me-3">
                                                 <i class="fa fa-pencil">
                                                     Edit
                                                 </i>
                                             </a>
-                                            {{-- <form action="{{ '/items/' . $items->id }}" method="post" class="delbtn">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit">
-                                                    <i class="fa fa-trash">
-                                                        Remove
-                                                    </i>
-                                                </button>
-                                            </form> --}}
-                                            <a class="delbtn">Delete</a>
 
+                                            <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter"
+                                                class="delbtn"><i class="fa fa-trash">
+                                                    Remove
+                                                </i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -121,14 +113,54 @@
             </div>
         </div>
     </div>
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <li style="color: red" class="mt-5">{{ $error }}</li>
-        @endforeach
-    @endif
-    {{--  --}}
+
+
+
+    <div id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" class="modal">
+        <div role="document">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <center>
+                        <form action="#" method="post" id="delete-form">
+                            @csrf
+                            @method('DELETE')
+                            <div class="modal-body" style="color:gray;">
+                                {{-- <input type=hidden id="delid" name=id> --}}
+                                <h5 id="exampleModalLabel">Are you sure want to delete?
+                                    <b>
+                                        <div id="deldis"></div>
+                                    </b>
+                                </h5>
+
+                                <button type=button data-dismiss="modal" class="me-4">No</button>
+                                <button type=submit class="btn btn-primary">Yes</button>
+                            </div>
+                        </form>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div style="color: grey">
         @include('sweetalert::alert')
     </div>
-    
+    <script>
+        $(document).ready(function() {
+
+
+            $('.delbtn').click(function() {
+                $tr = $(this).closest('tr');
+                var data = $tr.children('td').map(function() {
+                    return $(this).text();
+                }).get();
+                document.getElementById("delete-form").action = '/items/' + data[0];
+                $('#delid').val(data[0])
+                $('#deldis').html(data[1])
+            });
+        })
+    </script>
+
+
 </x-app-layout>

@@ -3,20 +3,20 @@
 @section('content') --}}
 <style>
     #add-card {
-        width: 40rem;
+        /* width: 40rem; */
     }
 
     @media screen and (max-width: 450px) {
 
         #add-card {
-            width: 20rem;
+            /* width: 20rem; */
         }
     }
 
     @media screen and (min-width: 451px) {
 
         #add-card {
-            width: 30rem;
+            /* width: 30rem; */
         }
     }
 
@@ -76,8 +76,8 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-4">
+        <div class="max-w-1xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <center>
@@ -108,17 +108,30 @@
                                         <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3" value="">{{ $data->desc }}</textarea>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">Category</label>
+                                        <label for="category_id" class="form-label">Category</label>
                                         <select name="category_id" class="form-select "
                                             aria-label="Default select example">
                                             @foreach ($category as $cat)
-                                                <option value="{{ $cat->id }}" {{ $data->category_id==$cat->id? 'selected':''}}>{{ $cat->title }}</option>
+                                                <option value="{{ $cat->id }}"
+                                                    {{ $data->category_id == $cat->id ? 'selected' : '' }}>
+                                                    {{ $cat->title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="supplier_id" class="form-label">Supplier</label>
+                                        <select name="supplier_id" class="form-select "
+                                            aria-label="Default select example">
+                                            @foreach ($suppliers as $supplier)
+                                                <option value="{{ $supplier->id }}"
+                                                    {{ $data->supplier_id == $supplier->id ? 'selected' : '' }}>
+                                                    {{ $supplier->title }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         {{-- <input type="submit" value="Add" class="btn btn-primary"> --}}
-                                        <x-primary-button type="submit" class="ml-3">
+                                        <x-primary-button type="submit" class="ml-3 me-2">
                                             Submit
                                         </x-primary-button>
                                         <input type="reset" value="Reset" class="">

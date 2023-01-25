@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('desc');
-            $table->integer('unit');
-            $table->foreignId('category_id')->constrained('categories');
-            $table->foreignId('supplier_id')->constrained('suppliers');
-            $table->float('price');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('suppliers');
     }
 };

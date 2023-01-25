@@ -19,4 +19,8 @@ class items extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function supplier()
+    {
+        return $this->belongsTo(supplier::class);
+    }
 }

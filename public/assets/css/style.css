@@ -13280,7 +13280,7 @@ input[type="button"].btn-block {
   height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  border-top: 1px solid #2c2e33;
+  border-top: 1px solid #e4e4e4;
 }
 
 .dropdown-item {
@@ -15736,7 +15736,7 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #191c24;
+  background-color: #ffffff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -17148,9 +17148,9 @@ a.close.disabled {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #000000;
+  /* background-color: #000000; */
   background-clip: padding-box;
-  border: 1px solid #2c2e33;
+  border: 0px solid #2c2e33;
   border-radius: 0.3rem;
   outline: 0;
 }
@@ -30022,7 +30022,7 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #191c24;
+  background: white;
   width: 244px;
   height: 70px;
 }

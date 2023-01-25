@@ -3,22 +3,29 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
+
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     {{-- <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a> --}}
-                    <img src="https://cdn1.vectorstock.com/i/1000x1000/74/80/symbol-design-creative-tech-logo-icon-template-vector-35357480.jpg"
-                        alt="logo" width="20" height="20">
+                    {{-- <img src="https://cdn1.vectorstock.com/i/1000x1000/74/80/symbol-design-creative-tech-logo-icon-template-vector-35357480.jpg"
+                        alt="logo" width="20" height="20"> --}}
+                    {{-- <i class=" mdi mdi-chart-arc"></i> --}}
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                </div> --}}
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="/plans" :active="request()->routeIs('pricing')">
+                        Pricing
+                    </x-nav-link>
+                </div> --}}
+                {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('itemsShow')" :active="request()->routeIs('itemsShow')">
                         Product List
                     </x-nav-link>
@@ -27,7 +34,7 @@
                     <x-nav-link href="/category" :active="request()->routeIs('CatList')">
                         Category List
                     </x-nav-link>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Settings Dropdown -->
@@ -53,7 +60,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            <i class="fa fa-user"></i> {{ __('Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -63,7 +70,7 @@
                             <x-dropdown-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                <i class="fa fa-lock"></i> {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -90,18 +97,48 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                <i class="fa fa-gauge-min"></i> {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('itemsShow')" :active="request()->routeIs('itemsShow')">
-                Product List
-            </x-nav-link>
+                <i class="fa fa-square-list"></i> Product List
+                </x-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="/category" :active="request()->routeIs('CatList')">
-                Category List
-            </x-nav-link>
+                <i class="fa fa-list-timeline"></i> Category List
+                </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="/supplier" :active="request()->routeIs('SupList')">
+                <i class="fa fa-shop"></i> Supplier List
+                </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="#">
+                <i class="fa fa-shop"></i> Manage Unit
+                </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="/sale" :active="request()->routeIs('viewsale')">
+                <i class="fa fa-shop"></i> Sales
+                </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="/plans" :active="request()->routeIs('pricing')">
+                <i class="fa fa-indian-rupee-sign"></i> Pricing
+                </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="#">
+                <i class="fa fa-shop"></i> About
+                </x-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="#">
+                <i class="fa fa-shop"></i> Documentation
+                </x-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -113,7 +150,7 @@
 
             <div class="mt-1 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                    <i class="fa fa-user"></i> {{ __('Profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -123,7 +160,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        <i class="fa fa-lock"></i> {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

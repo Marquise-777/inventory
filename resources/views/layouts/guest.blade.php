@@ -19,11 +19,15 @@
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
+                <img class="w-20 h-20 fill-current text-gray-500"
+                    src="https://images.unsplash.com/photo-1673833453112-8bf23d68ccd0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                    alt="">
             </a>
         </div>
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+
             {{ $slot }}
         </div>
     </div>

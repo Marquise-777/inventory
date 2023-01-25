@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> --}}
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     {{-- bootstrap --}}
@@ -27,6 +28,8 @@
     <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/invoice.css') }}"> --}}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -46,7 +49,7 @@
                 <main class="main-panel">
                     @if (isset($header))
                         <header class="bg-white shadow">
-                            <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+                            <div class="max-w-1xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                                 {{ $header }}
                             </div>
                         </header>
@@ -78,7 +81,7 @@
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="/assets/datatables.js"></script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('.delbtn').on('click', function() {
                 $('#delmodal').modal('show');
@@ -91,7 +94,8 @@
                 $('#deldis').html(data[1])
             })
         })
-    </script>
+    </script> --}}
+    
 </body>
 
 </html>

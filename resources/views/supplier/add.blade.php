@@ -9,7 +9,7 @@
     </style>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Add Category
+            Add Supplier
         </h2>
     </x-slot>
 
@@ -19,7 +19,7 @@
                 <div class="p-6 text-gray-900">
                     <center>
                         <div class="mt-2" id="add-card">
-                            <form action="/addCategory" method="POST">
+                            <form action="/addsupplier" method="POST">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Title</label>
