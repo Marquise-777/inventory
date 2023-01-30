@@ -23,4 +23,8 @@ class items extends Model
     {
         return $this->belongsTo(supplier::class);
     }
+    public function purchase()
+    {
+        return $this->hasMany(Purchase::class);
+    }
 }

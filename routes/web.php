@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
@@ -23,11 +24,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -54,7 +57,11 @@ Route::middleware('auth')->group(function () {
     Route::get('plans/{plan}', [PlanController::class, 'show'])->name("plans.show");
     Route::post('subscription', [PlanController::class, 'subscription'])->name("subscription.create");
 
-    Route::get('sale', [SalesController::class, 'index'])->name('viewsale');
+    Route::get('sale', [SalesController::class, 'create'])->name('viewsale');
+    Route::post('sale', [SalesController::class, 'store'])->name('addsale');
+    Route::get('customers', [SalesController::class, 'index'])->name('viewsale');
+    Route::get('purchase/{id}', [SalesController::class, 'show'])->name('viewsale');
+    Route::get('invoice/{id}', [SalesController::class, 'edit'])->name('testinvoice');
 });
 
 

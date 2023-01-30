@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\items;
+use App\Models\Purchase;
+use App\Services\PurchaseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -14,8 +18,8 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $items = items::all();
-        return view('sale.sale',compact('items'));
+        $customers = Customer::get();
+        return view('sale.customers',compact('customers'));
     }
 
     /**
@@ -25,7 +29,8 @@ class SalesController extends Controller
      */
     public function create()
     {
-        //
+        $items = items::all();
+        return view('sale.sale',compact('items'));
     }
 
     /**
@@ -34,9 +39,11 @@ class SalesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, PurchaseService $service)
     {
-        //
+        $customer = $service->create($request->all());
+        $purchases = Purchase::where('customer_id','=', $customer->id)->get();
+        return view('sale.invoice',compact('purchases'));
     }
 
     /**
@@ -47,7 +54,8 @@ class SalesController extends Controller
      */
     public function show($id)
     {
-        //
+         $purchases = Purchase::where('customer_id','=', $id)->get();
+        return view('sale.purchases',compact('purchases'));
     }
 
     /**
@@ -58,7 +66,8 @@ class SalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $purchases = Purchase::where('customer_id','=', $id)->get();
+        return view('sale.invoice',compact('purchases'));
     }
 
     /**

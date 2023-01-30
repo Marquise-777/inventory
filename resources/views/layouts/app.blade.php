@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     {{-- <link rel="stylesheet" href="{{ asset('assets/invoice.css') }}"> --}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
 </head>
 
 <body class="font-sans antialiased">
@@ -81,6 +85,7 @@
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="/assets/datatables.js"></script>
+    
     {{-- <script>
         $(document).ready(function() {
             $('.delbtn').on('click', function() {

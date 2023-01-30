@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\items;
 use Illuminate\Http\Request;
-use App\Models\supplier;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class SupplierController extends Controller
+class DashboardController extends Controller
 {
+    private function monthlyincome($year, $month) {
+        return Customer::whereYear('created_at', $year)->whereMonth('created_at', $month)->sum('totalprice');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +18,13 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = supplier::get();
-        return view('supplier.list', compact('suppliers'));
+        $year = date('Y');
+        $month = date('m');
+        $noitems = count(items::get());
+        $nocustomer = count(Customer::get());
+        $totalincome = Customer::sum('totalprice');
+        $monthlyincome = $this->monthlyincome($year, $month);
+        return view('dashboard', compact('noitems','nocustomer','totalincome','monthlyincome'));
     }
 
     /**
@@ -26,7 +34,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('supplier.add');
+        //
     }
 
     /**
@@ -37,12 +45,7 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        $supplier = new supplier();
-        $supplier->title = $request->title;
-        $supplier->save();
-        Alert::success('Supplier Added Successfully');
-
-        return redirect('/supplier')->with('success', 'Added Successfully');
+        //
     }
 
     /**
@@ -87,8 +90,6 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        supplier::destroy($id);
-        Alert::success('Supplier Deleted Successfully');
-        return redirect('/supplier')->with('success', 'Deleted Successfully');
+        //
     }
 }

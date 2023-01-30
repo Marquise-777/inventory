@@ -76,7 +76,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Price</label>
                                     <input name="price" type="text" class="form-control"
-                                        id="exampleFormControlInput1" placeholder="$20/unit">
+                                        id="exampleFormControlInput1" placeholder="₹20/unit">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Description</label>

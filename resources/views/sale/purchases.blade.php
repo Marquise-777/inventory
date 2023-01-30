@@ -1,51 +1,17 @@
-{{-- @extends('layout.boilerplate')
-
-@section('content')
-    <table class="table table-stripe" cellpadding='10'>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Desc</th>
-                <th>Qt.</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($iPro as $items)
-                <tr>
-                    <td>{{ $items->id }}</td>
-                    <td>{{ $items->title }}</td>
-                    <td>{{ $items->desc }}</td>
-                    <td>{{ $items->unit }}</td>
-                    <td>{{ $items->price }}</td>
-                    <td>{{ $items->cat_id }}</td>
-                    <td>
-                        <a href="/items/{{ $items->id }}">edit</a>
-                        <form action="{{ '/items/' . $items->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">DELETE</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    
-@endsection --}}
-
-{{-- @include('modal.del') --}}
-
-
-
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Products
-        </h2>
+        <div class="d-flex">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight p-2 flex-grow-1">
+                Purchased
+            </h2>
+            <nav aria-label="breadcrumb align-self-end p-2">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/sale">Sale</a></li>
+                  <li class="breadcrumb-item"><a href="/customers">Customer</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Purchased</li>
+                </ol>
+            </nav>
+        </div>
     </x-slot>
 
     {{-- <div class="d-flex justify-content-evenly">
@@ -61,44 +27,36 @@
         <div class="max-w-1xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900  table-responsive">
-                    <a href="/add">
-                        <x-primary-button class="ml-3 mb-2">
-                            Add Product
-                        </x-primary-button>
-                    </a>
                     <table class="itemstable">
+                        <a href="/customers">
+                            <x-primary-button class="ml-3 mb-2">
+                                <i class=" mdi mdi-arrow-left me-3"></i>
+                                Back to Customers
+                            </x-primary-button>
+                        </a>
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Title</th>
-                                <th>Desc</th>
-                                <th>Qt.</th>
+                                <th>Purchased By</th>
+                                <th>Product</th>
+                                <th>quantity</th>
                                 <th>Price</th>
-                                <th>Category</th>
-                                <th>Supplier</th>
+                                <th>Bought Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($iPro as $item)
+                            @foreach ($purchases as $purchase)
                                 <tr class="mb-2">
-                                    <td>{{ $item->id }}</td>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ substr($item->desc, 0, 20) }}</td>
-                                    <td>{{ $item->unit }}</td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>{{ $item->category ? $item->category->title : '-' }}</td>
-                                    <td>{{ $item->supplier ? $item->supplier->title : '-' }}</td>
+                                    <td>{{ $purchase->id }}</td>
+                                    <td>{{ $purchase->customer->customer_name }}</td>
+                                    <td>{{ $purchase->items->title }}</td>
+                                    <td>{{ $purchase->quantity }}</td>
+                                    <td>{{ $purchase->selling_price }}</td>
+                                    <td>{{ date('d-M-y', strtotime($purchase->created_at)) }}</td>
                                     <td>
                                         <div class="d-flex">
-
-                                            <a href="/items/{{ $item->id }}" class="me-3">
-                                                <i class="fa fa-pencil">
-                                                    Edit
-                                                </i>
-                                            </a>
-
                                             <a href="javascript:;" data-toggle="modal" data-target="#exampleModalCenter"
                                                 class="delbtn"><i class="fa fa-trash">
                                                     Remove

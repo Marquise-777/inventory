@@ -88,6 +88,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
+        Alert::success('Category Deleted Successfully');
+
         return redirect('/category')->with('success', 'Deleted Successfully');
     }
 }
