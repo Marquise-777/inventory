@@ -156,7 +156,7 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/about">
                 <span class="menu-icon">
                     <i class="  mdi mdi-information  text-primary"></i>
                 </span>

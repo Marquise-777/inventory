@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col-9">
                             <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0 text-gray-900">{{ $nocustomer }}</h3>
+                                <h3 class="mb-0 text-gray-900">{{ $daylyincome }}</h3>
                                 {{-- <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p> --}}
                             </div>
                         </div>
@@ -53,17 +53,18 @@
                             </div> --}}
                         </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Total Number of Customer </h6>
+                    <h6 class="text-muted font-weight-normal">Today's Income </h6>
                 </div>
             </div>
         </div>
+
         <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-9">
                             <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0 text-gray-900">₹{{ $totalincome }}</h3>
+                                <h3 class="mb-0 text-gray-900">₹{{ $monthlyincome }}</h3>
                                 {{-- <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p> --}}
                             </div>
                         </div>
@@ -73,17 +74,18 @@
                             </div> --}}
                         </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">Total Income</h6>
+                    <h6 class="text-muted font-weight-normal"> {{ date('M') }} Income</h6>
                 </div>
             </div>
         </div>
+        
         <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-9">
                             <div class="d-flex align-items-center align-self-start">
-                                <h3 class="mb-0 text-gray-900">₹{{ $monthlyincome }}</h3>
+                                <h3 class="mb-0 text-gray-900">₹{{ $totalincome }}</h3>
                                 {{-- <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p> --}}
                             </div>
                         </div>
@@ -93,7 +95,7 @@
                             </div> --}}
                         </div>
                     </div>
-                    <h6 class="text-muted font-weight-normal">{{ date('M') }} Income</h6>
+                    <h6 class="text-muted font-weight-normal">Total Income</h6>
                 </div>
             </div>
         </div>

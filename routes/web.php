@@ -62,6 +62,10 @@ Route::middleware('auth')->group(function () {
     Route::get('customers', [SalesController::class, 'index'])->name('viewsale');
     Route::get('purchase/{id}', [SalesController::class, 'show'])->name('viewsale');
     Route::get('invoice/{id}', [SalesController::class, 'edit'])->name('testinvoice');
+
+    Route::get('/about', function () {
+        return view('about');
+    });
 });
 
 

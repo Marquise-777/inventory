@@ -150,6 +150,8 @@
                                 let d = data[x].price;
                                 if(data[x].unit < $('#qty'+z).val()){
                                     alert('You Exceed Stock Amount');
+                                    $('#qty'+z).val('');
+                                    totalamount()
                                 }
                                 else{
                                      s = data[x].price * $('#qty'+z).val();

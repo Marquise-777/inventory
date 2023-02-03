@@ -11,6 +11,9 @@ class DashboardController extends Controller
     private function monthlyincome($year, $month) {
         return Customer::whereYear('created_at', $year)->whereMonth('created_at', $month)->sum('totalprice');
     }
+    private function daylyincome($y, $m, $d) {
+        return Customer::whereYear('created_at', $y)->whereMonth('created_at', $m)->whereDate('created_at',$d)->sum('totalprice');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,11 +23,13 @@ class DashboardController extends Controller
     {
         $year = date('Y');
         $month = date('m');
+        $date = date('d');
         $noitems = count(items::get());
         $nocustomer = count(Customer::get());
         $totalincome = Customer::sum('totalprice');
         $monthlyincome = $this->monthlyincome($year, $month);
-        return view('dashboard', compact('noitems','nocustomer','totalincome','monthlyincome'));
+        $daylyincome = $this->daylyincome($year, $month, $date);
+        return view('dashboard', compact('noitems','nocustomer','totalincome','monthlyincome','daylyincome'));
     }
 
     /**
